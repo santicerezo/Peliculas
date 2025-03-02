@@ -2,15 +2,16 @@ import {inject, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../environment/environment";
 import {Observable} from "rxjs";
-import {Movie, MovieDetail, MoviesListApiResponse} from "../common/interface";
+import { MoviesListApiResponse} from "../common/movie-list.interface";
+import {MovieDetail} from "../common/movie-detail.interface";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  private readonly BASE_URL = environment.baseUrl
+  private readonly BASE_URL = environment.baseUrl+"movie/"
   private readonly POPULAR_URL = this.BASE_URL+"popular"
-  private readonly TOKEN = environment.baseUrl
+  private readonly TOKEN = environment.token
 
   private readonly http: HttpClient = inject(HttpClient)
 

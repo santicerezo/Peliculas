@@ -9,7 +9,7 @@ import {MovieDetail} from "../common/movie-detail.interface";
   providedIn: 'root'
 })
 export class MovieService {
-  private readonly BASE_URL = environment.baseUrl+"movie/"
+  private readonly BASE_URL = environment.apiBaseUrl+"movie/"
   private readonly POPULAR_URL = this.BASE_URL+"popular"
   private readonly TOKEN = environment.token
 

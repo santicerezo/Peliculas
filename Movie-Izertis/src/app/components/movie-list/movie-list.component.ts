@@ -2,11 +2,18 @@ import {Component, inject} from '@angular/core';
 import {MovieService} from "../../service/movie.service";
 import {MoviesListApiResponse} from "../../common/movie-list.interface";
 import {SearchService} from "../../service/search.service";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons";
+import {NgStyle} from "@angular/common";
+import {environment} from "../../environment/environment";
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [],
+  imports: [
+    FaIconComponent,
+    NgStyle
+  ],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css'
 })
@@ -14,6 +21,7 @@ export class MovieListComponent {
   private readonly movieService: MovieService = inject(MovieService)
   private readonly searchService: SearchService = inject(SearchService)
   moviesData !: MoviesListApiResponse
+  showSuggestions:boolean= true
 
   constructor() {
     this.loadPopularMovies()
@@ -32,9 +40,11 @@ export class MovieListComponent {
     const data = event.target.value as string
     if(data.trim()===""){
       this.loadPopularMovies()
+      this.showSuggestions=true
     }
     else {
       this.searchService.search(data)
+      this.showSuggestions = false
     }
   }
 
@@ -42,12 +52,21 @@ export class MovieListComponent {
     this.searchService.start().subscribe({
       next:(value)=>{
         this.moviesData = value
-      },error(){
-        console.log("Error tete")
+      }
+      ,error(err){
+        console.log(err)
       }
     })
+
+
+
+  }
+
+  getImageUrl(size:string,endPath:string){
+    return environment.imageBaseUrl+size+"/"+endPath
+
   }
 
 
-
+  protected readonly faMagnifyingGlass = faMagnifyingGlass;
 }

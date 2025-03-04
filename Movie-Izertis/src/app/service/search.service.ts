@@ -11,7 +11,7 @@ import { MoviesListApiResponse} from "../common/movie-list.interface";
 export class SearchService {
 
   private readonly http: HttpClient = inject(HttpClient)
-  private readonly QUERY_TITLE_URL = environment.baseUrl+"search/movie?query="
+  private readonly QUERY_TITLE_URL = environment.apiBaseUrl+"search/movie?query="
   private readonly TOKEN = environment.token
   private readonly query : Subject<string> = new Subject<string>()
 
@@ -27,7 +27,10 @@ export class SearchService {
     })
   )
 
+
+
   constructor() { }
+
 
   start(){
     return this.moviesFound$;

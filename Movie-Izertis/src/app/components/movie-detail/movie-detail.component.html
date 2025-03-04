@@ -1,1 +1,31 @@
-<p>movie-detail works!</p>
+<button routerLink="/movie-list" class="yellowBtn btn btn-warning mt-2"><fa-icon [icon]="faArrowLeft"></fa-icon> Movie List</button>
+
+<div class="container rounded mt-4 d-flex justify-content-between">
+    <div class="container-img col-md-4 ">
+      <img [src]="movie.poster_path!=null? getImageUrl('w500',movie.poster_path):'/assets/image-not-available.jpg'" class="img-fluid shadow " alt="Poster de {{movie.title}}">
+      <div class="btn-group ms-2 mt-2">
+        <input type="radio" class="btn-check" name="options" id="like" autocomplete="off">
+        <label class="btn btn-outline-success rounded me-2" for="like">
+          <fa-icon [icon]="faThumbsUp"></fa-icon>
+        </label>
+        <input type="radio" class="btn-check" name="options" id="dislike" autocomplete="off">
+        <label class="btn btn-outline-danger rounded" for="dislike">
+          <fa-icon [icon]="faThumbsDown"></fa-icon>
+        </label>
+      </div>
+
+    </div>
+    <div class="container-info col-md-8">
+      <h1 class="mb-0">{{movie.title}}</h1>
+      <h5 class="fst-italic mb-4">{{movie.tagline}}</h5>
+      <p><strong>Release Date:</strong> {{movie.release_date}}</p>
+      <p><strong>Duration:</strong> {{movie.runtime}} min</p>
+      <p><strong>Description:</strong> {{movie.overview}}</p>
+      <p><strong>Original Language:</strong> {{movie.original_language}}</p>
+      <p><strong>Country of Origin:</strong> {{movie.origin_country}}</p>
+      <p><strong>Budget:</strong> ${{movie.budget}}</p>
+      <p><strong>Revenue:</strong> ${{movie.revenue}}</p>
+      <p><strong>Rating:</strong> {{movie.vote_average}} ({{movie.vote_count}} votos)</p>
+      <a href="{{movie.homepage}}" class="yellowBtn btn" target="_blank">View More</a>
+    </div>
+</div>

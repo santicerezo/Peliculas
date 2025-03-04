@@ -1,1 +1,43 @@
-<p>movie-list works!</p>
+
+
+@defer (when moviesData){
+  <div class="d-flex justify-content-center mt-5">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+      <span class="input-group-text bg-dark" id="inputGroup-sizing-default">
+        <fa-icon [icon]="faMagnifyingGlass" [ngStyle]="{'color':'white'}"></fa-icon>
+      </span>
+        <input type="search"
+               placeholder="Search a movie title..."
+               class="form-control bg-dark text-white shadow-none custom-placeholder"
+               aria-label="Sizing example input"
+               aria-describedby="inputGroup-sizing-default"
+               (input)="onChangeForm($event)">
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="row mt-4">
+    <h4 class="text-secondary">{{ showSuggestions? "Popular Movies":"Results ("+moviesData.results.length+")" }}</h4>
+    @for (movie of moviesData.results;track movie.id){
+      <div class="col-md-6 col-lg-3  my-2 mb-5">
+
+        <div class="movieCard card shadow bg-dark">
+          <div class="card-header d-flex justify-content-between">
+            <h5 class="card-title text-light fw-semibold">{{movie.title}}</h5>
+            <div class="rating card shadow ">
+              <h4 class="mt-1 fw-bold">{{movie.vote_average }}</h4>
+            </div>
+
+          </div>
+          <img [src]="movie.poster_path!=null? getImageUrl('w500',movie.poster_path):'/assets/image-not-available.jpg' " alt="No se puede">
+
+        </div>
+      </div>
+    }
+  </div>
+}
+

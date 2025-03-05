@@ -25,7 +25,7 @@
     @for (movie of moviesData.results;track movie.id){
       <div class="col-md-6 col-lg-3  my-2 mb-5">
 
-        <div class="movieCard card shadow bg-dark">
+        <div class="movieCard card shadow bg-dark" [routerLink]="'/movie-detail/'+movie.id">
           <div class="card-header d-flex justify-content-between">
             <h5 class="card-title text-light fw-semibold">{{movie.title}}</h5>
             <div class="rating card shadow ">

@@ -1,0 +1,14 @@
+
+
+.container{
+    background: linear-gradient(to left,#ccc9a7 ,#4a505e);
+  padding: 5%;
+  color: white;
+}
+
+.container-info{
+  padding: 5%;
+}
+.yellowBtn{
+  background: linear-gradient(to left,yellow,orange);
+}

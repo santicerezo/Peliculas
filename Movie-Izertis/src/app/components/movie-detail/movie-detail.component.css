@@ -1,9 +1,10 @@
 
 
 .container{
-    background: linear-gradient(to left,#ccc9a7 ,#4a505e);
+  background: linear-gradient(to left,#ccc9a7 ,#4a505e);
   padding: 5%;
   color: white;
+  min-width: 260px;
 }
 
 .container-info{
@@ -11,4 +12,5 @@
 }
 .yellowBtn{
   background: linear-gradient(to left,yellow,orange);
+  max-height: 50px;
 }
